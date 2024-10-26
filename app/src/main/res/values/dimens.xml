@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="recycler_end_padding">16dp</dimen>
+    <dimen name="recycler_horizontal_padding">16dp</dimen>
+</resources>

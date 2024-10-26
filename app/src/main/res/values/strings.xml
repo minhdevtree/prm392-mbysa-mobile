@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MBYSA || FIT2D</string>
+    <string name="header_text">MBYSA || FIT2D</string>
+    <string name="search_product_hint">Search for products...</string>
+    <string name="featured_products_title">Featured Products</string>
+    <string name="all_products_title">All Products</string>
+    <string name="new_products_title">New Products</string>
+    <string name="related_products_title">Related Products</string>
+    <string name="comments_title">Comments</string>
+    <string name="no_comments_found">No comments found</string>
+    <string name="buy_now_btn">Buy Now</string>
+    <string name="virtual_try_on_btn">Virtual Try-On</string>
+</resources>
