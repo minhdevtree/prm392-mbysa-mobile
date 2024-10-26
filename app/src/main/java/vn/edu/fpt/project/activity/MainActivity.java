@@ -73,6 +73,8 @@ public class MainActivity extends BaseActivity {
                     startActivity(intent);
                     // Use custom animations
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    // Clear the text in searchView
+                    searchView.setText("");
                 }
                 return true;
             }
