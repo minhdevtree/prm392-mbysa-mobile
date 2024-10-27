@@ -12,7 +12,8 @@
     <ScrollView
         android:id="@+id/scrollViewProductDetail"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,7 +35,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:clipToPadding="false"
-                android:scrollbars="horizontal"
                 android:paddingBottom="8dp" />
 
             <TextView
@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:drawablePadding="5dp"
                     android:text="0"
-                    android:textColor="@color/white"
+                    android:textColor="@color/foreground"
                     app:drawableStartCompat="@drawable/star" />
             </LinearLayout>
 

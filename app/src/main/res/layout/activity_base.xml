@@ -8,8 +8,6 @@
     <!-- Include the header layout -->
     <include layout="@layout/header_layout" />
 
-    <!-- ScrollView to hold the activity's content and allow scrolling -->
-
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/header_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/background_95"
+    android:clipToPadding="false"
+    android:elevation="4dp"
     android:orientation="horizontal"
-    android:background="#27282b"
-    android:padding="12dp">
+    android:padding="12dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:translationZ="4dp">
+
+    <!--    &lt;!&ndash; Border at the bottom &ndash;&gt;-->
+    <!--    <View-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="1dp"-->
+    <!--        android:background="@color/border_40" />-->
 
     <TextView
         android:id="@+id/shopTitle"
