@@ -20,7 +20,7 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.List;
 
 import vn.edu.fpt.project.R;
-import vn.edu.fpt.project.activity.ProductDetailActivity;
+import vn.edu.fpt.project.view.ProductDetailActivity;
 import vn.edu.fpt.project.model.Product;
 
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ProductViewHolder> {

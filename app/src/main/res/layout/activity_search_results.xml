@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.SearchResultsActivity">
+    tools:context=".view.SearchResultsActivity">
 
     <!-- TextView for displaying the search query -->
     <TextView

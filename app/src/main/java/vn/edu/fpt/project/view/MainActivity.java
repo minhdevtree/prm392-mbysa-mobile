@@ -1,4 +1,4 @@
-package vn.edu.fpt.project.activity;
+package vn.edu.fpt.project.view;
 
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
