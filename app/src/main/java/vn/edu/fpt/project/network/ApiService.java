@@ -10,7 +10,7 @@ import vn.edu.fpt.project.model.Comment;
 import vn.edu.fpt.project.model.Product;
 
 public interface ApiService {
-    @GET("products?filter=lastest")
+    @GET("products?filter=latest")
     Call<List<Product>> getAllProducts();
 
     @GET("products")
@@ -19,8 +19,8 @@ public interface ApiService {
     @GET("products?filter=featured")
     Call<List<Product>> getFeaturedProducts();
 
-    @GET("products?filter=lastest&pageSize=5")
-    Call<List<Product>> getLastestProducts();
+    @GET("products?filter=latest&pageSize=5")
+    Call<List<Product>> getLatestProducts();
 
     @GET("products/{id}/related")
     Call<List<Product>> getRelatedProducts(@Path("id") String id);

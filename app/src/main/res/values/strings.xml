@@ -10,4 +10,10 @@
     <string name="no_comments_found">No comments found</string>
     <string name="buy_now_btn">Buy Now</string>
     <string name="virtual_try_on_btn">Virtual Try-On</string>
+    <string-array name="sort_options">
+        <item>Sort by Latest</item>
+        <item>Sort by Oldest</item>
+        <item>Price: Low to High</item>
+        <item>Price: High to Low</item>
+    </string-array>
 </resources>

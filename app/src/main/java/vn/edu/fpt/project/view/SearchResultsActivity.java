@@ -1,5 +1,9 @@
 package vn.edu.fpt.project.view;
 
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +26,8 @@ public class SearchResultsActivity extends BaseActivity {
     private ProgressBar progressBarSearchResults;
     private ProductListAdapter adapterSearchResults;
     private ProductViewModel productViewModel;
+    private String currentSortOption = "latest"; // Default sort option
+    private String query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,27 @@ public class SearchResultsActivity extends BaseActivity {
 
         recyclerViewSearchResults = findViewById(R.id.recyclerViewSearchResults);
         progressBarSearchResults = findViewById(R.id.progressBarSearchResults);
+        Spinner sortSpinner = findViewById(R.id.sortSpinner);
+
+        // Initialize sort options
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.sort_options, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sortSpinner.setAdapter(adapter);
+
+        // Handle sorting option changes
+        sortSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                currentSortOption = getSortOptionFromPosition(position);
+                searchProducts(query); // Re-search products based on new sort option
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
 
         // Set up a GridLayoutManager with 2 columns and center items with padding/margin adjustments
         recyclerViewSearchResults.setLayoutManager(new GridLayoutManager(this, 2));
@@ -48,7 +75,7 @@ public class SearchResultsActivity extends BaseActivity {
 
         productViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
 
-        String query = getIntent().getStringExtra("query");
+        query = getIntent().getStringExtra("query");
         searchProducts(query);
     }
 
@@ -65,7 +92,7 @@ public class SearchResultsActivity extends BaseActivity {
         searchResultTextView.setText("Search results for: " + query);
         searchResultTextView.setVisibility(View.VISIBLE);
 
-        productViewModel.searchProducts("latest", query).observe(this, listProduct -> {
+        productViewModel.searchProducts(currentSortOption, query).observe(this, listProduct -> {
             progressBarSearchResults.setVisibility(View.GONE);
             if (listProduct != null && !listProduct.isEmpty()) {
                 adapterSearchResults = new ProductListAdapter(listProduct);
@@ -75,5 +102,21 @@ public class SearchResultsActivity extends BaseActivity {
                 Toast.makeText(SearchResultsActivity.this, "No products found", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    // Helper method to get sort option string based on the selected position
+    private String getSortOptionFromPosition(int position) {
+        switch (position) {
+            case 0:
+                return "latest";
+            case 1:
+                return "oldest";
+            case 2:
+                return "price-asc";
+            case 3:
+                return "price-desc";
+            default:
+                return "latest";
+        }
     }
 }

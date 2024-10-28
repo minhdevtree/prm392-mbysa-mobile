@@ -34,10 +34,10 @@ public class MainActivity extends BaseActivity {
     private long backPressedTime;
     private Toast backToast;
     private EditText searchView;
-    private RecyclerView.Adapter adapterAllProducts, adapterFeaturedProducts, adapterLastestProducts;
-    private RecyclerView recyclerAllProducts, recyclerFeaturedProducts, recyclerLastestProducts;
+    private RecyclerView.Adapter adapterAllProducts, adapterFeaturedProducts, adapterLatestProducts;
+    private RecyclerView recyclerAllProducts, recyclerFeaturedProducts, recyclerLatestProducts;
 
-    private ProgressBar loadingAllProducts, loadingFeaturedProducts, loadingLastestProducts;
+    private ProgressBar loadingAllProducts, loadingFeaturedProducts, loadingLatestProducts;
     private ViewPager2 viewPager2;
     private Handler slideHandler = new Handler();
 
@@ -56,7 +56,7 @@ public class MainActivity extends BaseActivity {
 
         fetchFeaturedProducts();
         fetchAllProducts();
-        fetchLastestProducts();
+        fetchLatestProducts();
     }
 
     private void setupSearch() {
@@ -97,14 +97,14 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-    private void fetchLastestProducts() {
-        loadingLastestProducts.setVisibility(View.VISIBLE);
-        productViewModel.getLastestProducts().observe(this, listProduct -> {
-            loadingLastestProducts.setVisibility(View.GONE);
+    private void fetchLatestProducts() {
+        loadingLatestProducts.setVisibility(View.VISIBLE);
+        productViewModel.getLatestProducts().observe(this, listProduct -> {
+            loadingLatestProducts.setVisibility(View.GONE);
 
             if (listProduct != null) {
-                adapterLastestProducts = new ProductListAdapter(listProduct);
-                recyclerLastestProducts.setAdapter(adapterLastestProducts);
+                adapterLatestProducts = new ProductListAdapter(listProduct);
+                recyclerLatestProducts.setAdapter(adapterLatestProducts);
             } else {
                 Toast.makeText(MainActivity.this, "Failed to fetch new products", Toast.LENGTH_SHORT).show();
             }
@@ -179,12 +179,12 @@ public class MainActivity extends BaseActivity {
         viewPager2 = findViewById(R.id.viewPagerSlider);
 
         recyclerFeaturedProducts = findViewById(R.id.recyclerFeaturedProducts);
-        recyclerLastestProducts = findViewById(R.id.recyclerLastestProducts);
+        recyclerLatestProducts = findViewById(R.id.recyclerLatestProducts);
         recyclerAllProducts = findViewById(R.id.recyclerViewAllProducts);
 
 
         recyclerFeaturedProducts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        recyclerLastestProducts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerLatestProducts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         // Set up a GridLayoutManager with 2 columns and center items with padding/margin adjustments
         recyclerAllProducts.setLayoutManager(new GridLayoutManager(this, 2));
@@ -203,7 +203,7 @@ public class MainActivity extends BaseActivity {
 
         loadingFeaturedProducts = findViewById(R.id.progressBarFeaturedProducts);
         loadingAllProducts = findViewById(R.id.progressBarAllProducts);
-        loadingLastestProducts = findViewById(R.id.progressBarLastestProducts);
+        loadingLatestProducts = findViewById(R.id.progressBarLatestProducts);
     }
 
     @Override

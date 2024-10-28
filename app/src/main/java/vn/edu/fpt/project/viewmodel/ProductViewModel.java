@@ -24,8 +24,8 @@ public class ProductViewModel extends ViewModel {
         return productRepository.getFeaturedProducts();
     }
 
-    public LiveData<List<Product>> getLastestProducts() {
-        return productRepository.getLastestProducts();
+    public LiveData<List<Product>> getLatestProducts() {
+        return productRepository.getLatestProducts();
     }
 
     public LiveData<List<Product>> getRelatedProducts(String id) {

@@ -61,9 +61,9 @@ public class ProductRepository {
         return data;
     }
 
-    public LiveData<List<Product>> getLastestProducts() {
+    public LiveData<List<Product>> getLatestProducts() {
         MutableLiveData<List<Product>> data = new MutableLiveData<>();
-        apiService.getLastestProducts().enqueue(new Callback<List<Product>>() {
+        apiService.getLatestProducts().enqueue(new Callback<List<Product>>() {
             @Override
             public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                 if (response.isSuccessful()) {
