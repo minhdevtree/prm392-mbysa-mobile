@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import vn.edu.fpt.project.adapter.ProductListAdapter;
+import vn.edu.fpt.project.util.SortUtils;
 import vn.edu.fpt.project.viewmodel.ProductViewModel;
 
 public class SearchResultsActivity extends BaseActivity {
@@ -48,7 +49,7 @@ public class SearchResultsActivity extends BaseActivity {
         sortSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                currentSortOption = getSortOptionFromPosition(position);
+                currentSortOption = SortUtils.getSortOptionFromPosition(position);
                 searchProducts(query); // Re-search products based on new sort option
             }
 
@@ -102,21 +103,5 @@ public class SearchResultsActivity extends BaseActivity {
                 Toast.makeText(SearchResultsActivity.this, "No products found", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    // Helper method to get sort option string based on the selected position
-    private String getSortOptionFromPosition(int position) {
-        switch (position) {
-            case 0:
-                return "latest";
-            case 1:
-                return "oldest";
-            case 2:
-                return "price-asc";
-            case 3:
-                return "price-desc";
-            default:
-                return "latest";
-        }
     }
 }
